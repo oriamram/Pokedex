@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+@mixin flex($direction, $justify, $align) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+@mixin position($position, $top, $left) {
+	position: $position;
+	top: $top;
+	left: $left;
+}
+
+@mixin size($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: "Lato", sans-serif;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+button {
+	cursor: pointer;
+	color: inherit;
+	background-color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	padding: 0.3em 0.6em;
+}
+
+input,
+select,
+option {
+	font-family: inherit;
+	font-size: inherit;
+	padding: 0.3em 0.6em;
+}
+
+input:focus,
+input:active {
+	outline: 0;
+}

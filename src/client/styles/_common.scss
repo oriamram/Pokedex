@@ -1,0 +1,91 @@
+body {
+	background-image: url("../images/background.jpg");
+	&::before {
+		content: "";
+		z-index: -1;
+		@include position(fixed, 0, 0);
+		@include size(100vw, 100vh);
+		background-color: rgba(220, 220, 220, 0.4);
+	}
+}
+
+// =================================================================
+// Scrollbar
+// =================================================================
+
+// =================================================================
+// Pokemon Types
+// =================================================================
+
+.fire {
+	background-color: #ff4422 !important;
+	border: 3px solid darken(#ff4422, 10%) !important;
+}
+.grass {
+	background-color: #77cc55 !important;
+	border: 3px solid darken(#77cc55, 10%) !important;
+}
+.poison {
+	background-color: #aa5599 !important;
+	border: 3px solid darken(#aa5599, 10%) !important;
+}
+.water {
+	background-color: #3399ff !important;
+	border: 3px solid darken(#3399ff, 10%) !important;
+}
+.ice {
+	background-color: #66ccff !important;
+	border: 3px solid darken(#66ccff, 10%) !important;
+}
+.flying {
+	background-color: #8899ff !important;
+	border: 3px solid darken(#8899ff, 10%) !important;
+}
+.dragon {
+	background-color: #7766ee !important;
+	border: 3px solid darken(#7766ee, 10%) !important;
+}
+.bug {
+	background-color: #aabb22 !important;
+	border: 3px solid darken(#aabb22, 10%) !important;
+}
+.normal {
+	background-color: #aaaa99 !important;
+	border: 3px solid darken(#aaaa99, 10%) !important;
+}
+.fighting {
+	background-color: #bb5544 !important;
+	border: 3px solid darken(#bb5544, 10%) !important;
+}
+.dark {
+	background-color: #775544 !important;
+	border: 3px solid darken(#775544, 10%) !important;
+}
+.electric {
+	background-color: #ffcc33 !important;
+	border: 3px solid darken(#ffcc33, 10%) !important;
+}
+.psychic {
+	background-color: #ff5599 !important;
+	border: 3px solid darken(#ff5599, 10%) !important;
+}
+.steel {
+	background-color: #aaaabb !important;
+	border: 3px solid darken(#aaaabb, 10%) !important;
+}
+.fairy {
+	background-color: #ee99ee !important;
+	border: 3px solid darken(#ee99ee, 10%) !important;
+}
+.rock {
+	background-color: #bbaa66 !important;
+	border: 3px solid darken(#bbaa66, 10%) !important;
+}
+.ghost {
+	background-color: #6666bb !important;
+	border: 3px solid darken(#6666bb, 10%) !important;
+}
+.ground {
+	background-color: #ddbb55 !important;
+	border: 3px solid darken(#ddbb55, 10%) !important;
+}

@@ -1,0 +1,377 @@
+@import "config";
+@import "common";
+
+.container {
+	@include flex(column, flex-start, center);
+	background-color: rgba(255, 255, 255, 0.9);
+	width: 90%;
+	max-width: 1400px;
+	min-height: 100vh;
+	margin: 0 auto;
+}
+
+// =================================================================
+// Header
+// =================================================================
+
+header {
+	@include flex(row, space-between, center);
+	background-image: radial-gradient(circle farthest-corner at -4% -12.9%, rgba(74, 98, 110, 1) 0.3%, rgba(30, 33, 48, 1) 90.2%);
+	width: 100%;
+	text-align: center;
+	padding: 1em 3em;
+	h1 {
+		margin-right: 0.4em;
+		font-size: 6rem;
+		color: white;
+		cursor: pointer;
+	}
+	.search-container {
+		@include flex(row, space-between, center);
+		background-color: lightgray;
+		font-size: 1.4rem;
+		border-radius: 0.3em;
+		overflow: hidden;
+		#search-box {
+			background-color: transparent;
+			border: 0;
+			width: 100%;
+		}
+		#search-button {
+			border: 0;
+			color: white;
+			background-color: gray;
+			transition: background-color 0.2s;
+			&:hover {
+				background-color: darken(gray, 10%);
+			}
+		}
+	}
+}
+
+// =================================================================
+// Side Menu, Loader and Not Found
+// =================================================================
+
+#side-menu {
+	z-index: 1;
+	@include position(fixed, 50%, calc(100% - 235px));
+	width: 235px;
+	background-color: rgb(221, 221, 221);
+	padding: 0.5%;
+	border: 6px solid black;
+	border-right: 0;
+	border-radius: 20px 0 0 20px;
+	text-align: center;
+	transform: translate(95%, -50%);
+	transition: transform 0.5s ease-in-out;
+	#side-menu-toggler {
+		@include position(absolute, 50%, 0%);
+		@include size(45px, 60px);
+		border: 0;
+		background-color: black;
+		color: white;
+		border-radius: 10px 0 0 10px;
+		transform: translate(-100%, -50%);
+		transform-origin: center center;
+		&::before,
+		&::after {
+			content: "";
+			@include position(absolute, unset, 50%);
+			@include size(28px, 5%);
+			background-color: white;
+			transform: translate(-50%, 0);
+			transform-origin: center center;
+			transition: transform 0.5s;
+		}
+		&::before {
+			top: 40%;
+		}
+		&::after {
+			top: 60%;
+		}
+	}
+	&.active {
+		transform: translate(0, -50%);
+		#side-menu-toggler {
+			&::before {
+				transform: translate(-50%, 200%) rotate(-45deg);
+			}
+			&::after {
+				transform: translate(-50%, -200%) rotate(45deg);
+			}
+		}
+	}
+	p {
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+	#sorter {
+		border-radius: 8px;
+		margin: 0.8em 0;
+		padding: 0.2em 0.3em;
+	}
+	.filter {
+		label {
+			@include flex(row, center, flex-end);
+			font-size: 1.2rem;
+			input {
+				appearance: none;
+				font-size: 0.9rem;
+				position: relative;
+				@include size(22px, 22px);
+				background-color: white;
+				border: 2px solid black;
+				border-radius: 4px;
+				margin-right: 0.3em;
+				padding: 0;
+				&::before {
+					content: "";
+					@include position(absolute, 50%, 50%);
+					@include size(14px, 14px);
+					background-color: rebeccapurple;
+					border-radius: 2px;
+					transform: translate(-50%, -50%) scale(0);
+					transform-origin: center center;
+					transition: 120ms transform ease-in-out;
+				}
+				&:checked::before {
+					transform: translate(-50%, -50%) scale(1);
+				}
+			}
+		}
+	}
+	.type-filters {
+		@include flex(row, space-evenly, center);
+		flex-wrap: wrap;
+		margin: 0.4em 0;
+		.type-filter {
+			font-size: 0.8rem;
+			font-weight: bold;
+			width: 30%;
+			margin: 0.3em 0.1em;
+			padding: 0.3em;
+			color: white;
+			border-radius: 0.3em;
+			text-transform: capitalize;
+			background-color: black;
+			border: black 3px solid;
+			transition: box-shadow 0.3s, background-color 0.3s, border-color 0.3s;
+			&:hover {
+				box-shadow: 0 0 6px 2px blue;
+			}
+		}
+	}
+}
+
+#loader {
+	display: none;
+	&.active {
+		@include flex(row, center, center);
+		height: 400px;
+	}
+	.circle {
+		@include size(25px, 25px);
+		background-color: rgb(0, 0, 0);
+		border-radius: 50%;
+		margin: 0 0.2em;
+		animation: load 1s ease-in-out infinite;
+		&:nth-of-type(2) {
+			animation-delay: 0.1s;
+		}
+		&:nth-of-type(3) {
+			animation-delay: 0.2s;
+		}
+		&:nth-of-type(4) {
+			animation-delay: 0.3s;
+		}
+		&:nth-of-type(5) {
+			animation-delay: 0.4s;
+		}
+	}
+}
+
+@keyframes load {
+	0% {
+		transform: translateY(0);
+	}
+	30% {
+		transform: translateY(-40px);
+	}
+	60%,
+	100% {
+		transform: translateY(0);
+	}
+}
+
+#not-found {
+	display: none;
+	font-size: 2.5rem;
+	margin: 2em 0;
+	&.active {
+		display: block;
+	}
+}
+
+// =================================================================
+// Cards
+// =================================================================
+
+.cards-container {
+	@include flex(row, center, center);
+	flex-wrap: wrap;
+	padding: 2em 1em;
+}
+
+.card {
+	position: relative;
+	cursor: pointer;
+	font-size: 1.5rem;
+	width: 210px;
+	padding: 1em;
+	margin: 1em;
+	background-color: rgb(235, 235, 235);
+	border-radius: 0.6rem;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 11px 4px;
+	transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+	img {
+		width: 100%;
+	}
+	&:hover {
+		background-color: lighten(rgb(235, 235, 235), 10%);
+		transform: scale(1.04);
+		box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 11px 4px;
+	}
+}
+
+.pokemon-title {
+	@include flex(row, center, center);
+	margin-bottom: 0.3em;
+	.name {
+		text-transform: capitalize;
+	}
+	.id {
+		font-size: 1.3rem;
+		margin-left: 0.4em;
+		color: gray;
+		&::before {
+			content: "#";
+		}
+	}
+}
+
+.types {
+	@include flex(row, space-evenly, center);
+	flex-wrap: wrap;
+	font-size: 1rem;
+	span {
+		text-transform: capitalize;
+		color: white;
+		padding: 0.3em 0.6em;
+		border-radius: 0.3em;
+	}
+}
+
+.star {
+	position: absolute;
+	top: 3%;
+	right: 3%;
+	font-size: max(0.8rem, 1.5vw);
+	transition: color 0.3s, text-shadow 0.3s, font-size 0.25s linear;
+	&.active {
+		color: gold;
+		text-shadow: 0px 0px 3px black;
+	}
+	&:hover {
+		font-size: max(1.1rem, 1.9vw);
+	}
+}
+
+// =================================================================
+// Media Query
+
+@media only screen and (max-width: 900px) {
+	header {
+		h1 {
+			font-size: 5rem;
+		}
+	}
+	.card {
+		font-size: 1.2rem;
+		width: 170px;
+		padding: 0.8em;
+		margin: 0.8em;
+	}
+	.pokemon-title .id {
+		font-size: 1rem;
+	}
+	.types {
+		font-size: 0.8rem;
+	}
+}
+
+@media only screen and (max-width: 740px) {
+	header {
+		padding: 1em;
+		h1 {
+			font-size: 3rem;
+		}
+		.search-container {
+			font-size: 1rem;
+		}
+	}
+	.card {
+		font-size: 0.9rem;
+		width: 125px;
+	}
+	.pokemon-title .id {
+		font-size: 0.7rem;
+	}
+	.types {
+		font-size: 0.65rem;
+	}
+}
+
+@media only screen and (max-width: 540px) {
+	.container {
+		width: 100%;
+		background-color: rgba(255, 255, 255, 0.6);
+	}
+	.cards-container {
+		padding: 1em 0.5em;
+	}
+}
+
+@media only screen and (max-width: 460px) {
+	header {
+		padding: 0.6em;
+		h1 {
+			font-size: 1.9rem;
+		}
+		.search-container {
+			font-size: 0.9rem;
+		}
+	}
+	.card {
+		font-size: 0.7rem;
+		width: 90px;
+		padding: 0.6em;
+		margin: 0.6em;
+	}
+	.pokemon-title .id {
+		font-size: 0.5rem;
+	}
+	.types {
+		font-size: 0.45rem;
+	}
+}
+::-webkit-scrollbar {
+	width: 17px;
+	display: block;
+}
+::-webkit-scrollbar-track {
+	background: rgb(209, 209, 209);
+}
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.404);
+}

@@ -1,0 +1,24 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module"
+	},
+	"plugins": ["import", "@typescript-eslint"],
+	"rules": {
+		"@typescript-eslint/indent": ["error", "tab"],
+		"import/newline-after-import": "error",
+		"no-unused-vars": "error",
+		"no-var": "error",
+		"prefer-const": "error",
+		"prefer-template": "error",
+		"quotes": ["error", "double"],
+		"semi": ["error", "always"],
+		"no-console": "warn",
+		"spaced-comment": "error",
+		"no-const-assign": "error",
+		"@typescript-eslint/explicit-function-return-type": "error",
+		"@typescript-eslint/no-inferrable-types": "error",
+		"@typescript-eslint/default-param-last": "error"
+	}
+}
