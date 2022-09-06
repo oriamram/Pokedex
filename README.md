@@ -1,4 +1,4 @@
-# pokedex-oriamram-yuvron
+# Pokedex-oriamram-yuvron
 
 ## Important:
 
