@@ -32,17 +32,17 @@ loadPage();
 // Renders all the pokemons, getting the starred pokemon and initializes all the event listeners
 async function loadPage(): Promise<void> {
 	loader.classList.add("active");
-	let token: string;
-	if (localStorage.getItem("token")) {
-		token = localStorage.getItem("token");
+	let pokedexToken: string;
+	if (localStorage.getItem("pokedexToken")) {
+		pokedexToken = localStorage.getItem("pokedexToken");
 	} else {
-		token = await fetchText(REGISTER_URL);
-		localStorage.setItem("token", token);
+		pokedexToken = await fetchText(REGISTER_URL);
+		localStorage.setItem("pokedexToken", pokedexToken);
 	}
-	GET_POKEMONS_URL = GET_POKEMONS_URL.replace("<token>", token);
-	GET_FAVORITES_URL = GET_FAVORITES_URL.replace("<token>", token);
-	ADD_FAVORITE_URL = ADD_FAVORITE_URL.replace("<token>", token);
-	DELETE_FAVORITE_URL = DELETE_FAVORITE_URL.replace("<token>", token);
+	GET_POKEMONS_URL = GET_POKEMONS_URL.replace("<token>", pokedexToken);
+	GET_FAVORITES_URL = GET_FAVORITES_URL.replace("<token>", pokedexToken);
+	ADD_FAVORITE_URL = ADD_FAVORITE_URL.replace("<token>", pokedexToken);
+	DELETE_FAVORITE_URL = DELETE_FAVORITE_URL.replace("<token>", pokedexToken);
 	await createPokemons();
 	initializeEventListeners();
 	loader.classList.remove("active");
