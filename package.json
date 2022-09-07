@@ -6,7 +6,8 @@
 	"scripts": {
 		"start": "node dist/server/server.js",
 		"dev": "gulp",
-		"deploy": "gulp deploy"
+		"deploy": "gulp deploy",
+		"initDb": "node scripts/db/initDb.js"
 	},
 	"keywords": [],
 	"author": "",
