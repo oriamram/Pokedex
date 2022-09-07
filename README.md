@@ -35,7 +35,7 @@ https://pokedex-oriamram-yuvron.herokuapp.com/
 
    ```console
    npm ci
-   npm run initDb
+   npm run initDb (Skip that step if you have our database link)
    npm run dev
    ```
 
