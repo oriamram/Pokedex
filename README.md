@@ -5,8 +5,8 @@ With up to 8,000 newly fused pokemons, this website is the best to discover your
 
 ### <ins>**Technologies used**</ins>:
 
-**Front:** Typescript, SCSS  
-**Back:** Node js, Express, PostgreSQL
+**Front:** Typescript | SCSS  
+**Back:** Node js | Express | PostgreSQL
 
 ---
 
